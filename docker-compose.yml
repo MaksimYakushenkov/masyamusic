@@ -1,0 +1,18 @@
+services:
+  masyamusic:
+    build: .
+    ports:
+      - "3019:3019"
+    environment:
+      - NEXTAUTH_URL=http://localhost:3019
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-change-me-in-production}
+      - DATABASE_PATH=/app/data/masyamusic.db
+      - UPLOADS_PATH=/app/uploads
+    volumes:
+      - masyamusic_data:/app/data
+      - masyamusic_uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  masyamusic_data:
+  masyamusic_uploads:
