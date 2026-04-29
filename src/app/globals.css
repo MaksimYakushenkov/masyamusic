@@ -88,6 +88,7 @@ input[type='range']:hover::-webkit-slider-thumb {
   color: white;
   font-family: var(--font);
   font-weight: 800;
+  min-height: 40px;
   transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
 }
 .btn-accent:hover {
@@ -105,6 +106,8 @@ input[type='range']:hover::-webkit-slider-thumb {
   outline: none;
   font-family: var(--font);
   font-size: 12px;
+  line-height: 1.5;
+  min-height: 46px;
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 .input-styled::placeholder { color: var(--text-subtle); }
@@ -194,3 +197,39 @@ input[type='range']:hover::-webkit-slider-thumb {
 }
 .mobile-nav-item--active { color: var(--accent); }
 .mobile-nav-item:not(.mobile-nav-item--active):hover { color: var(--text); }
+
+/* ─── Mobile overrides ─── */
+@media (max-width: 767px) {
+  /* Track row: убираем колонку индекса и длительности */
+  .track-row {
+    grid-template-columns: 36px 1fr auto !important;
+    gap: 10px !important;
+  }
+  .track-idx-col { display: none !important; }
+  .track-dur { display: none !important; }
+
+  /* Actions всегда видны на touch-устройствах */
+  .track-row .track-actions { opacity: 1 !important; }
+
+  /* Кнопки — минимальная зона касания */
+  .track-row .track-actions button,
+  .track-row .track-actions a {
+    padding: 6px;
+    margin: -6px;
+  }
+
+  /* Range inputs — увеличиваем зону касания */
+  input[type='range'] {
+    height: 20px;
+    padding: 8px 0;
+  }
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 3px;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    opacity: 1;
+    height: 14px;
+    width: 14px;
+    margin-top: -5.5px;
+  }
+}

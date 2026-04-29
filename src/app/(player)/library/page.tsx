@@ -80,7 +80,7 @@ export default function LibraryPage() {
   }))
 
   return (
-    <div className="px-6 py-8 max-w-4xl mx-auto">
+    <div className="px-3 py-4 sm:px-6 sm:py-8 max-w-4xl mx-auto">
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl font-black uppercase tracking-widest text-white" style={{ fontFamily: 'var(--font)' }}>
@@ -145,7 +145,7 @@ export default function LibraryPage() {
       ) : (
         <div>
           <div
-            className="grid text-[10px] font-bold uppercase tracking-widest px-3 mb-2"
+            className="hidden md:grid text-[10px] font-bold uppercase tracking-widest px-3 mb-2"
             style={{ gridTemplateColumns: '20px 36px 1fr auto auto', gap: '1rem', color: 'var(--text-subtle)' }}
           >
             <span>#</span><span /><span>Трек</span><span /><span />

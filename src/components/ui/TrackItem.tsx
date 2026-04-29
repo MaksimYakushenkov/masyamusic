@@ -48,7 +48,7 @@ export function TrackItem({ track, index, queue, onLike, onAddToPlaylist, showDo
       style={{ gridTemplateColumns: '20px 36px 1fr auto auto' }}
     >
       {/* Index / play — toggled via CSS in globals.css */}
-      <div className="flex items-center justify-center w-5">
+      <div className="track-idx-col flex items-center justify-center w-5">
         <span
           className="track-index text-xs tabular-nums font-medium"
           style={{ color: isCurrentTrack ? 'var(--accent)' : 'var(--text-muted)' }}
@@ -132,7 +132,7 @@ export function TrackItem({ track, index, queue, onLike, onAddToPlaylist, showDo
       </div>
 
       {/* Duration */}
-      <span className="text-[10px] w-8 text-right tabular-nums" style={{ color: 'var(--text-subtle)' }}>
+      <span className="track-dur text-[10px] w-8 text-right tabular-nums" style={{ color: 'var(--text-subtle)' }}>
         {fmt(track.duration)}
       </span>
     </div>

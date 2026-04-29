@@ -31,7 +31,8 @@ export default function SearchPage() {
       setResults(
         (data.tracks as Array<{ title: string; artist: string; coverUrl: string; downloadUrl: string }>).map((t) => ({
           title: t.title, artist: t.artist, coverUrl: t.coverUrl,
-          filePath: t.downloadUrl, downloadUrl: t.downloadUrl, liked: false,
+          filePath: `/api/proxy-audio?url=${encodeURIComponent(t.downloadUrl)}`,
+          downloadUrl: t.downloadUrl, liked: false,
         }))
       )
       setSearched(true)
@@ -71,7 +72,7 @@ export default function SearchPage() {
   }))
 
   return (
-    <div className="px-6 py-8 max-w-4xl mx-auto">
+    <div className="px-3 py-4 sm:px-6 sm:py-8 max-w-4xl mx-auto">
       {/* Header */}
       <h1
         className="text-2xl font-black uppercase tracking-widest text-white mb-6"
@@ -146,7 +147,7 @@ export default function SearchPage() {
       {!loading && results.length > 0 && (
         <div>
           <div
-            className="grid text-[10px] font-bold uppercase tracking-widest px-3 mb-2"
+            className="hidden md:grid text-[10px] font-bold uppercase tracking-widest px-3 mb-2"
             style={{ gridTemplateColumns: '20px 36px 1fr auto auto', gap: '1rem', color: 'var(--text-subtle)' }}
           >
             <span>#</span><span /><span>Трек</span><span /><span />

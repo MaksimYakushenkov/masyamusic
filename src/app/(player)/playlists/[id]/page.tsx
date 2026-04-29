@@ -82,11 +82,11 @@ export default function PlaylistPage() {
     <div>
       {/* Header */}
       <div
-        className="px-6 pt-10 pb-8 flex flex-wrap items-end gap-6"
+        className="px-3 pt-6 pb-4 sm:px-6 sm:pt-10 sm:pb-8 flex flex-wrap items-end gap-4 sm:gap-6"
         style={{ background: 'linear-gradient(to bottom, rgba(255,65,0,0.15), transparent)' }}
       >
         <div
-          className="w-40 h-40 rounded-2xl flex items-center justify-center text-5xl shadow-2xl flex-shrink-0"
+          className="w-28 h-28 sm:w-40 sm:h-40 rounded-2xl flex items-center justify-center text-5xl shadow-2xl flex-shrink-0"
           style={{
             background: 'linear-gradient(135deg, rgba(255,65,0,0.3) 0%, rgba(100,0,200,0.3) 100%)',
             border: '1px solid rgba(255,65,0,0.2)',
@@ -153,7 +153,7 @@ export default function PlaylistPage() {
       </div>
 
       {/* Track list */}
-      <div className="px-6 pb-8">
+      <div className="px-3 pb-4 sm:px-6 sm:pb-8">
         {tracks.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-sm font-bold uppercase tracking-widest text-white">Плейлист пуст</p>
@@ -164,7 +164,7 @@ export default function PlaylistPage() {
         ) : (
           <>
             <div
-              className="grid text-[10px] font-bold uppercase tracking-widest px-3 mb-2"
+              className="hidden md:grid text-[10px] font-bold uppercase tracking-widest px-3 mb-2"
               style={{ gridTemplateColumns: '20px 36px 1fr auto auto', gap: '1rem', color: 'var(--text-subtle)' }}
             >
               <span>#</span><span /><span>Трек</span><span /><span />
