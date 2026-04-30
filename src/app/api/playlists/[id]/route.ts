@@ -5,6 +5,8 @@ import db from '@/lib/db'
 import { playlists, playlistTracks, tracks, userTracks } from '@/lib/db/schema'
 import { eq, and, max } from 'drizzle-orm'
 
+export const dynamic = 'force-dynamic'
+
 // GET /api/playlists/[id] - get playlist with tracks
 export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions)

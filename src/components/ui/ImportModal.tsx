@@ -9,6 +9,7 @@ interface ImportResult {
   status: 'pending' | 'loading' | 'ok' | 'already_exists' | 'not_found' | 'error'
   title?: string
   artist?: string
+  error?: string
 }
 
 interface ImportModalProps {
@@ -53,8 +54,11 @@ export function ImportModal({ onClose, onDone }: ImportModalProps) {
         body: JSON.stringify({ query: lines[i] }),
       })
       const data = await res.json()
+      if (data.status === 'error' || !res.ok) {
+        console.error(`Import error [${lines[i]}]:`, data.error ?? data)
+      }
       setResults((prev) => prev.map((r, idx) =>
-        idx === i ? { ...r, status: data.status ?? 'error', title: data.title, artist: data.artist } : r
+        idx === i ? { ...r, status: data.status ?? 'error', title: data.title, artist: data.artist, error: data.error } : r
       ))
     }
 
@@ -84,7 +88,7 @@ export function ImportModal({ onClose, onDone }: ImportModalProps) {
     if (r.status === 'ok') return `${r.artist} — ${r.title}`
     if (r.status === 'already_exists') return `Уже есть: ${r.artist} — ${r.title}`
     if (r.status === 'not_found') return 'Не найдено'
-    if (r.status === 'error') return 'Ошибка'
+    if (r.status === 'error') return r.error ? `Ошибка: ${r.error}` : 'Ошибка'
     return ''
   }
 

@@ -5,6 +5,8 @@ import db from '@/lib/db'
 import { playlists, playlistTracks } from '@/lib/db/schema'
 import { eq, and, sql } from 'drizzle-orm'
 
+export const dynamic = 'force-dynamic'
+
 // POST /api/playlists/[id]/tracks - add track to playlist
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions)

@@ -15,7 +15,7 @@
 ```bash
 # Локально
 npm run db:migrate   # создать/обновить БД (нужно при первом запуске)
-npm run dev          # http://localhost:3019
+npm run dev          # http://localhost:3028
 
 # Продакшн (Docker)
 NEXTAUTH_SECRET=... docker-compose up -d --build
@@ -26,7 +26,7 @@ NEXTAUTH_SECRET=... docker-compose up -d --build
 Файл `.env.local` (локально) или переменные Docker:
 
 ```
-NEXTAUTH_URL=http://localhost:3019
+NEXTAUTH_URL=http://localhost:3028
 NEXTAUTH_SECRET=your-secret          # обязательно поменять в проде
 DATABASE_PATH=./data/masyamusic.db   # путь к SQLite-файлу
 UPLOADS_PATH=./uploads               # путь для хранения аудиофайлов

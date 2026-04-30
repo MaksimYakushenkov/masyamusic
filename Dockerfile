@@ -6,6 +6,8 @@ WORKDIR /app
 FROM base AS deps
 COPY package*.json ./
 RUN npm ci --legacy-peer-deps
+# Install musl SWC binary for Alpine Linux (--ignore-scripts prevents native rebuilds)
+RUN npm install @next/swc-linux-x64-musl --no-save --legacy-peer-deps --ignore-scripts
 
 # Build Next.js
 FROM base AS builder
@@ -40,8 +42,8 @@ RUN mkdir -p /app/data /app/uploads && chown nextjs:nodejs /app/data /app/upload
 
 USER nextjs
 
-EXPOSE 3019
-ENV PORT=3019
+EXPOSE 3028
+ENV PORT=3028
 ENV HOSTNAME="0.0.0.0"
 
 CMD ["sh", "-c", "node_modules/.bin/tsx src/lib/db/migrate.ts && node server.js"]

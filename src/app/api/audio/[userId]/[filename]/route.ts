@@ -5,6 +5,8 @@ import { readFile } from 'fs/promises'
 import path from 'path'
 import fs from 'fs'
 
+export const dynamic = 'force-dynamic'
+
 const UPLOADS_DIR = process.env.UPLOADS_PATH || path.join(process.cwd(), 'uploads')
 
 export async function GET(
